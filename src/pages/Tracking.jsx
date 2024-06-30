@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Button } from "@/components/ui/button";
 
 const Tracking = () => {
   const [position, setPosition] = useState([51.505, -0.09]);
@@ -12,7 +13,7 @@ const Tracking = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
       <h1 className="text-3xl mb-6">Real-Time Tracking</h1>
       <MapContainer center={position} zoom={13} className="h-96 w-full">
         <TileLayer
@@ -22,12 +23,12 @@ const Tracking = () => {
         <Marker position={position}></Marker>
       </MapContainer>
       <div className="mt-4 space-x-4">
-        <button className="bg-green-500 text-white p-2 rounded" onClick={() => console.log("Yes, I'm here")}>
+        <Button variant="success" onClick={() => console.log("Yes, I'm here")}>
           Yes, I'm here
-        </button>
-        <button className="bg-red-500 text-white p-2 rounded" onClick={() => console.log("No")}>
+        </Button>
+        <Button variant="destructive" onClick={() => console.log("No")}>
           No
-        </button>
+        </Button>
       </div>
     </div>
   );

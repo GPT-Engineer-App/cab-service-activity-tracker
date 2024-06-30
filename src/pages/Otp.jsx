@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp";
+import { Button } from "@/components/ui/button";
 
 const Otp = () => {
   const [otp, setOtp] = useState("");
@@ -11,7 +12,7 @@ const Otp = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
       <h1 className="text-3xl mb-6">OTP Verification</h1>
       <div className="mb-4">
         <InputOTP maxLength={6} value={otp} onChange={setOtp}>
@@ -28,12 +29,12 @@ const Otp = () => {
           </InputOTPGroup>
         </InputOTP>
       </div>
-      <button className="bg-blue-500 text-white p-2 rounded" onClick={handleVerify}>
+      <Button variant="primary" onClick={handleVerify}>
         Verify
-      </button>
-      <button className="mt-4 text-blue-500" onClick={() => console.log("Generate new OTP")}>
+      </Button>
+      <Button variant="link" onClick={() => console.log("Generate new OTP")}>
         Generate New OTP
-      </button>
+      </Button>
     </div>
   );
 };

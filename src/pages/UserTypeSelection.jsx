@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const UserTypeSelection = () => {
   const [userType, setUserType] = useState("");
@@ -15,36 +17,35 @@ const UserTypeSelection = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
       <h1 className="text-3xl mb-6">Select User Type</h1>
-      <div className="mb-4">
-        <button
-          className={`p-2 rounded ${userType === "passenger" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+      <div className="mb-4 space-x-4">
+        <Button
+          variant={userType === "passenger" ? "primary" : "outline"}
           onClick={() => setUserType("passenger")}
         >
           Passenger
-        </button>
-        <button
-          className={`p-2 rounded ml-4 ${userType === "driver" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+        </Button>
+        <Button
+          variant={userType === "driver" ? "primary" : "outline"}
           onClick={() => setUserType("driver")}
         >
           Driver
-        </button>
+        </Button>
       </div>
       {userType && (
-        <div className="mb-4">
+        <div className="mb-4 w-64">
           <label className="block mb-2">{userType === "passenger" ? "Customer Name" : "Driver Name"}</label>
-          <input
+          <Input
             type="text"
-            className="border p-2"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
       )}
-      <button className="bg-blue-500 text-white p-2 rounded" onClick={handleNext}>
+      <Button variant="primary" onClick={handleNext}>
         Next
-      </button>
+      </Button>
     </div>
   );
 };
