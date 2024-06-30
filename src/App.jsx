@@ -8,11 +8,13 @@ import Tracking from "./pages/Tracking.jsx";
 import UserTypeSelection from "./pages/UserTypeSelection.jsx";
 import Passenger from "./pages/Passenger.jsx";
 import Driver from "./pages/Driver.jsx";
+import FlashActivity from "./components/FlashActivity.jsx";
 import Navbar from "./components/Navbar.jsx";
 
 function App() {
   return (
     <Router>
+      <FlashActivity />
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Index />} />
