@@ -1,4 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Index from "./pages/Index.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
@@ -27,6 +29,7 @@ function App() {
         <Route exact path="/passenger" element={<Passenger />} />
         <Route exact path="/driver" element={<Driver />} />
       </Routes>
+      <ToastContainer />
     </Router>
   );
 }

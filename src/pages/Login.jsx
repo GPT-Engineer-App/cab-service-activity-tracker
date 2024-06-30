@@ -4,22 +4,42 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const handleNext = () => {
+    if (!phoneNumber) {
+      toast({
+        title: "Error",
+        description: "Phone number is required.",
+        variant: "destructive",
+      });
+      return;
+    }
     navigate("/otp");
   };
 
   const handleGoogleLoginSuccess = (response) => {
     console.log("Google login success:", response);
+    toast({
+      title: "Success",
+      description: "Google login successful.",
+      variant: "success",
+    });
     navigate("/otp");
   };
 
   const handleGoogleLoginFailure = (response) => {
     console.log("Google login failure:", response);
+    toast({
+      title: "Error",
+      description: "Google login failed.",
+      variant: "destructive",
+    });
   };
 
   return (
