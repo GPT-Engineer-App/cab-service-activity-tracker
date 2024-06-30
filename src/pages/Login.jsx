@@ -8,14 +8,15 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [country, setCountry] = useState(""); // Added state for country
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleNext = () => {
-    if (!phoneNumber) {
+    if (!phoneNumber || !country) { // Check if both phone number and country are provided
       toast({
         title: "Error",
-        description: "Phone number is required.",
+        description: "Country and phone number are required.",
         variant: "destructive",
       });
       return;
@@ -47,7 +48,7 @@ const Login = () => {
       <h1 className="text-3xl mb-6">Login</h1>
       <div className="mb-4 w-64">
         <label className="block mb-2">Country</label>
-        <Select>
+        <Select onValueChange={setCountry}> {/* Added onValueChange handler */}
           <SelectTrigger>
             <SelectValue placeholder="Select country" />
           </SelectTrigger>
