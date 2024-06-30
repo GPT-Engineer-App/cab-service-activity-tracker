@@ -15,7 +15,7 @@ const FlashActivity = () => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 z-50">
-      <h1 className="text-white text-4xl">Welcome to Cab Service</h1>
+      <h1 className="text-white text-4xl">Welcome to CABs24</h1>
     </div>
   );
 };
