@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -20,28 +23,32 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
       <h1 className="text-3xl mb-6">Login</h1>
-      <div className="mb-4">
+      <div className="mb-4 w-64">
         <label className="block mb-2">Country</label>
-        <select className="border p-2">
-          <option value="us">United States</option>
-          <option value="ca">Canada</option>
-          <option value="uk">United Kingdom</option>
-        </select>
+        <Select>
+          <SelectTrigger>
+            <SelectValue placeholder="Select country" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="us">United States</SelectItem>
+            <SelectItem value="ca">Canada</SelectItem>
+            <SelectItem value="uk">United Kingdom</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
-      <div className="mb-4">
+      <div className="mb-4 w-64">
         <label className="block mb-2">Phone Number</label>
-        <input
+        <Input
           type="text"
-          className="border p-2"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
       </div>
-      <button className="bg-blue-500 text-white p-2 rounded" onClick={handleNext}>
+      <Button variant="primary" onClick={handleNext}>
         Next
-      </button>
+      </Button>
       <div className="mt-4">
         <GoogleLogin
           onSuccess={handleGoogleLoginSuccess}

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const NavigationSetup = () => {
   const navigate = useNavigate();
@@ -8,14 +9,14 @@ const NavigationSetup = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen space-y-4">
       <h1 className="text-3xl mb-6">Real-Time Navigation Setup</h1>
-      <button className="bg-blue-500 text-white p-2 rounded mb-4" onClick={() => console.log("Get current location")}>
+      <Button variant="primary" onClick={() => console.log("Get current location")}>
         Get Current Location
-      </button>
-      <button className="bg-blue-500 text-white p-2 rounded" onClick={handleNext}>
+      </Button>
+      <Button variant="secondary" onClick={handleNext}>
         Next
-      </button>
+      </Button>
     </div>
   );
 };
