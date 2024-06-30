@@ -8,15 +8,24 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Signup = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [country, setCountry] = useState(""); // Added state for country
+  const [country, setCountry] = useState("");
   const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleNext = () => {
-    if (!phoneNumber || !country) { // Check if both phone number and country are provided
+    if (!phoneNumber || !country) {
       toast({
         title: "Error",
         description: "Country and phone number are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      toast({
+        title: "Error",
+        description: "Invalid phone number format.",
         variant: "destructive",
       });
       return;
@@ -48,7 +57,7 @@ const Signup = () => {
       <h1 className="text-3xl mb-6">Signup</h1>
       <div className="mb-4 w-64">
         <label className="block mb-2">Country</label>
-        <Select onValueChange={setCountry}> {/* Added onValueChange handler */}
+        <Select onValueChange={setCountry}>
           <SelectTrigger>
             <SelectValue placeholder="Select country" />
           </SelectTrigger>
